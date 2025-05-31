@@ -1,5 +1,6 @@
 import fs from 'fs'
 
+let maxTables:number = 10;
 let base:number = 1;
 let header:string = `
 ===================
@@ -9,7 +10,7 @@ let header:string = `
 let contentTable:string = ``;
 
 
-while ( base <= 10 ) {
+while ( base <= maxTables ) {
     
     for (let i = 1; i <= 10; i++) {
     
@@ -23,7 +24,7 @@ header = `
 
         if( i === 10 ){
         
-            console.log(header+contentTable);
+            // console.log(header+contentTable);
 
     if(!fs.existsSync('ouputs') ){
 
