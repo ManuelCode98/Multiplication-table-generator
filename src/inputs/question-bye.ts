@@ -11,7 +11,7 @@ const questionFour = ()=>{
 
         if( answer !== 'y' && answer !== 'q' ) { 
 
-            console.log(`El valor "${answer}" es invalido solo introducir numeros!!! `);
+            console.log(`El valor "${answer}" es invalido, introduce solo "Q" ó "Y" !!! `);
             questionFour(); 
             return 
         
@@ -27,6 +27,8 @@ const questionFour = ()=>{
         
         if( answer === 'y' ){
             questionOne()
+
+            return
         }
 
         rl.close();
