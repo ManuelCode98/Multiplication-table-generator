@@ -6,9 +6,11 @@ let contentTable:string = ``;
 
 const createTables = ( base:number, maxTables:number, multiplyUpTo:number )=>{ 
 
-    if( base >= 1 && maxTables <= 20 && multiplyUpTo <= 12 ){
+    const tables = base + ( maxTables - 1 );
 
-        while ( base <= maxTables ) {
+    if( base >= 1 && maxTables <= 100 && multiplyUpTo <= 20 ){
+
+        while ( base <= tables ) {
 
         for (let i = 1; i <= multiplyUpTo; i++) {
         
@@ -20,6 +22,7 @@ const createTables = ( base:number, maxTables:number, multiplyUpTo:number )=>{
             if( i === multiplyUpTo ){
 
                 const table:string = header+contentTable;
+                console.log( base, table )
                 saveTablesToTheFileSystem(base, table)
                 base = base + 1
                 i = 1

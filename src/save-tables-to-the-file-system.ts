@@ -12,7 +12,7 @@ const saveTablesToTheFileSystem = ( base:number, table:string )=>{
             `);
 
     }if ( fs.existsSync(folderName) ){
-        fs.appendFileSync(`./${folderName}/tabla del ${base}.txt`, table )
+        fs.appendFileSync(`./${folderName}/tabla del ${base}.md`, table )
         
     }
 

@@ -8,7 +8,7 @@ const questionTwo = ( base:string )=>{
 
 let maxTables:string = '0';
 
-    rl.question( questionMaxTables+`"${base}" `, (answer)=>{
+    rl.question( questionMaxTables+`"1" `, (answer)=>{
 
         if( !regularExpression().test( answer ) ){
 
