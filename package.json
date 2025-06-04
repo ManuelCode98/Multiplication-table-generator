@@ -1,7 +1,7 @@
 {
   "name": "02-multiplication",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "dev": "nodemon",
     "build": "rimraf ./dist && tsc",
@@ -16,5 +16,8 @@
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "keypress": "^0.2.1"
   }
 }

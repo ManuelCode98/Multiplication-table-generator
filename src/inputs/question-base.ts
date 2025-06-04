@@ -1,13 +1,14 @@
-
-import { questionBase } from "..";
 import { rl } from "../services/readline";
 import { regularExpression } from "../services/regular-expression";
-import { questionTwo } from "./question-two";
+import { functionQuestionMaxTables } from "./question-max-tables";
 
 
 
 
-const questionOne = ( )=>{ 
+
+const questionBase:string =`Que tabla quieres conocer: `;
+
+const functionQuestionBase = ( )=>{ 
 
     let base = '0';
 
@@ -15,23 +16,26 @@ const questionOne = ( )=>{
 
         if( !regularExpression().test( answer ) ){ 
             
+            console.clear();
             console.log(`El valor "${answer}" es invalido solo introducir numeros!!! `);
-            questionOne();  
+            functionQuestionBase();  
             return
         }
         
         base = answer
 
         if( typeof base === 'string' && base === '0' ){
-            questionOne( )
+            console.clear();
+            console.log('Datos invalidos, intenta de nuevo...')
+            functionQuestionBase( )
             return;
         }
-        questionTwo( base );
+        functionQuestionMaxTables( base );
     })
 
 };
 
 
 export {
-    questionOne
+    functionQuestionBase
 }

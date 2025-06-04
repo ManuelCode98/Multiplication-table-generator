@@ -4,7 +4,7 @@ import { schema } from "./schema";
 
 let contentTable:string = ``;
 
-const createTables = ( base:number, maxTables:number, multiplyUpTo:number )=>{ 
+const createTables = ( folderName:string, base:number, maxTables:number, multiplyUpTo:number )=>{ 
 
     const tables = base + ( maxTables - 1 );
 
@@ -22,8 +22,9 @@ const createTables = ( base:number, maxTables:number, multiplyUpTo:number )=>{
             if( i === multiplyUpTo ){
 
                 const table:string = header+contentTable;
-                console.log( base, table )
-                saveTablesToTheFileSystem(base, table)
+                // Muestra las tablas en consola
+                // console.log( base, table )
+                saveTablesToTheFileSystem( folderName, base, table)
                 base = base + 1
                 i = 1
                 contentTable = ``;

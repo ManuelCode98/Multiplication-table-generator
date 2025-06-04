@@ -3,3 +3,4 @@ dist/
 ouputs/
 Tablas de multiplicar/
 .env
+question-path.ts

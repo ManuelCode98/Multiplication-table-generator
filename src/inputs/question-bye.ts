@@ -1,18 +1,20 @@
-import { questionBye } from "..";
 import { rl } from "../services/readline";
 import { regularExpression } from "../services/regular-expression";
-import { questionOne } from "./question-one";
+import { functionQuestionBase } from "./question-base";
 
 
+const questionBye:string = `
+Presiona "y" si quieres mas tablas o "Q" para salir `;
 
-const questionFour = ()=>{ 
+const functionQuestionBye = ()=>{ 
 
     rl.question( questionBye, ( answer )=>{
 
         if( answer !== 'y' && answer !== 'q' ) { 
 
+            console.clear();
             console.log(`El valor "${answer}" es invalido, introduce solo "Q" ó "Y" !!! `);
-            questionFour(); 
+            functionQuestionBye(); 
             return 
         
         }
@@ -20,13 +22,16 @@ const questionFour = ()=>{
 
         if( answer === 'q' ){
             
+            console.clear();
             console.log(`
-                Gracias por tu participacion -.*`);
+            Gracias por tu participacion -.*`);
+                        
             return
         }
         
         if( answer === 'y' ){
-            questionOne()
+            console.clear();
+            functionQuestionBase()
 
             return
         }
@@ -38,5 +43,5 @@ const questionFour = ()=>{
 
 
 export {
-    questionFour
+    functionQuestionBye
 }

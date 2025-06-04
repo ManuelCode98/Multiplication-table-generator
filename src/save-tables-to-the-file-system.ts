@@ -1,19 +1,23 @@
+import path from "path";
 import fs from 'fs';
+import { homedir } from 'os';
+import { findDesktop } from './find-desktop';
 
-const folderName = 'Tablas de multiplicar';
 
-const saveTablesToTheFileSystem = ( base:number, table:string )=>{  
-   
-     if(!fs.existsSync(folderName) ){
+const saveTablesToTheFileSystem = ( folderName:string, base:number, table:string )=>{  
 
-        fs.mkdir(folderName, { recursive: true }, (err)=>{ if(err) throw err })
-        console.log(`
-            Se creo la carpeta "${ folderName }"
-            `);
+    // Funcion que devuelve el path del escritorio
+    const pathFound = findDesktop();
+    const pathFolderName = path.join( `${pathFound}`, folderName )
 
-    }if ( fs.existsSync(folderName) ){
-        fs.appendFileSync(`./${folderName}/tabla del ${base}.md`, table )
-        
+    if ( pathFolderName ){
+
+        fs.mkdirSync( pathFolderName, { recursive: true } )
+        const pathEnd = path.join( pathFolderName, `${base}.md` )
+        fs.writeFileSync( pathEnd, table )
+
+        console.clear();
+        console.log( `Proyecto guardado en el escrito con el nombre de \n"${ folderName }"` );
     }
 
 };
