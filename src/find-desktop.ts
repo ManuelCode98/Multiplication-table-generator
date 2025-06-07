@@ -15,19 +15,26 @@ const findDesktop = ()=>{
 
     const processEnv:any = process.env.USERPROFILE || process.env.HOME || '';
     const existsOneDrive:boolean = fs.readdirSync( processEnv ).includes('OneDrive');
-    const existsDesktop = fs.readdirSync( processEnv ).includes('escritorio');
+    const existsDesktop = fs.readdirSync( processEnv ).includes('desktop') || fs.readdirSync( processEnv ).includes('Desktop') ;
 
+    
     if( existsOneDrive ){
 
-        const containsOneDrive:string = `${processEnv}/OneDrive/`;
-        pathSaveFileDesktop = path.join( containsOneDrive || '', 'escritorio' )
-        
+        const existsDesktopInOneDrive = fs.readdirSync( `${processEnv}/OneDrive/` ).includes('Escritorio') || fs.readdirSync( `${processEnv}/OneDrive/` ).includes('escritorio');
+        if( existsDesktopInOneDrive ){
+ 
+            const containsOneDrive:string = `${processEnv}/OneDrive/`;
+            pathSaveFileDesktop = path.join( containsOneDrive || '', 'escritorio' )
+        } 
     }
     if( existsDesktop ){
 
-        const containsDesktop:string = `${processEnv}`;
-        pathSaveFileDesktop = path.join( containsDesktop || '', 'escritorio' )
-        
+        const existsDesktopOutOneDrive = fs.readdirSync( `${processEnv}` ).includes('Desktop') || fs.readdirSync( `${processEnv}` ).includes('desktop');
+        if( existsDesktopOutOneDrive ){
+                   
+            const containsDesktop:string = `${processEnv}`;
+            pathSaveFileDesktop = path.join( containsDesktop || '', 'Desktop' )
+        }
     }
 
     return pathSaveFileDesktop;
